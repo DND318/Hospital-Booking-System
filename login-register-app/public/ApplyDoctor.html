@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Doctor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar (reuse from homepage) -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>SH</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html"><span>🏠</span> Home</a></li>
+            <li><a href="#"><span>📅</span> Appointments</a></li>
+            <li><a href="apply-doctor.html" class="active"><span>💼</span> Apply Doctor</a></li>
+            <li><a href="#"><span>👤</span> Profile</a></li>
+            <li><a href="#"><span>↩️</span> Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="admin-info">
+                <span>🔔</span>
+                <span class="admin-text">Venom</span>
+            </div>
+        </div>
+
+        <!-- Apply Doctor Form -->
+        <div class="main-section">
+            <h2>Apply Doctor</h2>
+            
+            <!-- Personal Information Section -->
+            <div class="form-section">
+                <h3>Personal Information</h3>
+                <div class="form-group">
+                    <label>First Name <span>*</span></label>
+                    <input type="text" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <label>Last Name <span>*</span></label>
+                    <input type="text" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number <span>*</span></label>
+                    <input type="tel" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                    <label>Website <span>*</span></label>
+                    <input type="url" placeholder="Website">
+                </div>
+                <div class="form-group">
+                    <label>Address <span>*</span></label>
+                    <input type="text" placeholder="Address">
+                </div>
+            </div>
+
+            <!-- Professional Information Section -->
+            <div class="form-section">
+                <h3>Professional Information</h3>
+                <div class="form-group">
+                    <label>Specialization <span>*</span></label>
+                    <input type="text" placeholder="Specialization">
+                </div>
+                <div class="form-group">
+                    <label>Experience <span>*</span></label>
+                    <input type="number" placeholder="Experience">
+                </div>
+                <div class="form-group">
+                    <label>Fee Per Consultation <span>*</span></label>
+                    <input type="number" placeholder="Fee Per Consultation">
+                </div>
+                <div class="form-group">
+                    <label>Timings <span>*</span></label>
+                    <input type="time" placeholder="Start time">
+                    <span>to</span>
+                    <input type="time" placeholder="End time">
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button class="submit-button">SUBMIT</button>
+        </div>
+    </div>
+</body>
+</html>
