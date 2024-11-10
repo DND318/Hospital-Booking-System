@@ -1,103 +1,93 @@
-/* General Styles */
+/* Reset some default styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-/* Navbar Styles */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #007bff;
-    padding: 15px 30px;
+body {
+  display: flex;
+  height: 100vh;
 }
 
-.navbar .logo {
-    color: white;
-    font-size: 1.5em;
-    font-weight: bold;
+/* Sidebar styles */
+.sidebar {
+  width: 250px;
+  background-color: #004d4d;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
 }
 
-.navbar .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+.sidebar-header {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.navbar .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1em;
+.nav-links {
+  list-style: none;
+  padding: 0;
 }
 
-.navbar .nav-links a:hover {
-    text-decoration: underline;
+.nav-links li {
+  width: 100%;
 }
 
-/* Hero Section Styles */
-.hero {
-    height: 80vh;
-    background-image: linear-gradient(rgba(0, 123, 255, 0.7), rgba(0, 123, 255, 0.7)), url('https://via.placeholder.com/1920x1080');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
 }
 
-.hero-content h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
+.nav-links li a.active, .nav-links li a:hover {
+  background-color: #007373;
 }
 
-.hero-content p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+.nav-links li a span {
+  margin-right: 10px;
 }
 
-.hero .buttons {
-    display: flex;
-    gap: 15px;
+/* Main content styles */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.btn {
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
+.top-bar {
+  height: 50px;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: flex-end; /* Adjusted to align items to the right */
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.btn.primary {
-    background-color: #28a745;
-    color: white;
+.admin-info {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
 }
 
-.btn.primary:hover {
-    background-color: #218838;
+.admin-info span {
+  margin-right: 5px;
 }
 
-.btn.secondary {
-    background-color: #ffc107;
-    color: black;
+.main-section {
+  padding: 40px;
+  flex: 1;
+  background-color: #fff;
 }
 
-.btn.secondary:hover {
-    background-color: #e0a800;
-}
-
-/* Footer Styles */
-.footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+.main-section h1 {
+  font-size: 36px;
+  color: #333;
 }
