@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Appointment Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/logo.jpg" alt="Logo"> <!-- Add your logo image here -->
+            <span>Abubupital</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="homepage.html"><span>🏠</span> Home</a></li>
+            <li><a href="appointment.html"><span>📅</span> Appointments</a></li>
+            <li><a href="#"><span>↩️</span> Logout</a></li>
+        </ul>
+        <button class="btn-learn-more">Learn More</button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Doctor Information -->
+        <div class="doctor-info">
+            <img src="" alt="Doctor" class="doctor-photo" id="doctorPhoto">
+            <div class="doctor-details">
+                <h3 id="doctorName">Doctor Name</h3>
+                <p id="doctorSpecialty">Specialty</p>
+                <p id="doctorLocation">Location</p>
+            </div>
+        </div>
+
+        <!-- Appointment Form -->
+        <div class="appointment-form">
+            <h2>Book an Appointment with <span id="doctorNameForm"></span></h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label>Consultation Type</label>
+                    <label><input type="radio" name="consultationType" value="In Chamber" checked> In Chamber</label>
+                    <label><input type="radio" name="consultationType" value="Video Call"> Video Call</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Time</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+
+                <button type="submit" class="submit-button">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Doctor information object
+        const doctors = {
+            1: {
+                name: "Dr. Sadaf Hanif Awan",
+                specialty: "General Practitioner",
+                location: "New Al Shefa Clinic - Al Wasl Road",
+                photo: "/doctor1.png"
+            },
+            2: {
+                name: "Dr. Alex Johnson",
+                specialty: "Cardiologist",
+                location: "Heart Care Center - Downtown",
+                photo: "/doctor2.png"
+            },
+            3: {
+                name: "Dr. Maria Lee",
+                specialty: "Pediatrician",
+                location: "Happy Kids Clinic - Uptown",
+                photo: "/doctor3.png"
+            }
+        };
+
+        // Get doctor ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const doctorId = urlParams.get("doctor");
+        const doctor = doctors[doctorId];
+
+        // Display doctor information on the page
+        if (doctor) {
+            document.getElementById("doctorPhoto").src = doctor.photo;
+            document.getElementById("doctorName").textContent = doctor.name;
+            document.getElementById("doctorSpecialty").textContent = doctor.specialty;
+            document.getElementById("doctorLocation").textContent = doctor.location;
+            document.getElementById("doctorNameForm").textContent = doctor.name;
+        } else {
+            document.querySelector(".container").innerHTML = "<p>Doctor not found. Please return to the previous page.</p>";
+        }
+    </script>
+</body>
+</html>

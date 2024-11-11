@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/logo.jpg" alt="Logo"> <!-- Add your logo image here -->
+            <span>Abubupital</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="homepage.html"><span>🏠</span> Home</a></li>
+            <li><a href="appointment.html" class="active"><span>📅</span> Appointments</a></li>
+            <li><a href="#"><span>↩️</span> Logout</a></li>
+        </ul>
+        <button class="btn-learn-more">Learn More</button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Doctor Selection Section -->
+        <div class="doctor-selection">
+            <h2>Select a Doctor</h2>
+            <div class="doctor-thumbnails">
+                <img src="/doctor1.png" alt="Doctor 1" class="doctor-thumbnail" data-doctor="1">
+                <img src="/doctor2.png" alt="Doctor 2" class="doctor-thumbnail" data-doctor="2">
+                <img src="/doctor3.png" alt="Doctor 3" class="doctor-thumbnail" data-doctor="3">
+            </div>
+        </div>
+
+        <!-- Doctor Information and Appointment Form -->
+        <div class="doctor-details-form" id="doctorDetailsForm" style="display: none;">
+            <!-- Doctor Information -->
+            <div class="doctor-info">
+                <img src="" alt="Doctor" class="doctor-photo" id="doctorPhoto">
+                <div class="doctor-details">
+                    <h3 id="doctorName">Dr. Name <span class="status">●</span></h3>
+                    <p id="doctorSpecialty">Specialty</p>
+                    <p id="doctorLocation">Location</p>
+                </div>
+            </div>
+
+            <!-- Appointment Form -->
+            <div class="appointment-form">
+                <h2>Book an Appointment</h2>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" name="consultationType" value="In Doctor Chamber" checked>
+                            In Doctor Chamber
+                        </label>
+                        <label>
+                            <input type="radio" name="consultationType" value="In Video Call">
+                            In Video Call
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobileNumber">Mobile Number</label>
+                        <div class="input-group">
+                            <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="(555) 555-1234" required>
+                            <button type="button" id="verifyButton">Verify</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                    <button type="submit" class="submit-button">Book Appointment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
