@@ -10,80 +10,88 @@
     <!-- Top Navigation Bar -->
     <nav class="navbar">
         <div class="logo">
-            <img src="/logo.jpg" alt="Logo"> <!-- Add your logo image here -->
+            <img src="/logo.jpg" alt="Logo"> <!-- Replace with your logo -->
             <span>Abubupital</span>
         </div>
         <ul class="nav-links">
             <li><a href="homepage.html"><span>🏠</span> Home</a></li>
             <li><a href="appointment.html" class="active"><span>📅</span> Appointments</a></li>
+            <li><a href="ApplyDoctor.html"><span>🔑</span> Apply Doctor</a></li>
             <li><a href="#"><span>↩️</span> Logout</a></li>
         </ul>
         <button class="btn-learn-more">Learn More</button>
     </nav>
 
     <!-- Main Content -->
-    <div class="container">
-        <!-- Doctor Selection Section -->
-        <div class="doctor-selection">
-            <h2>Select a Doctor</h2>
-            <div class="doctor-thumbnails">
-                <img src="/doctor1.png" alt="Doctor 1" class="doctor-thumbnail" data-doctor="1">
-                <img src="/doctor2.png" alt="Doctor 2" class="doctor-thumbnail" data-doctor="2">
-                <img src="/doctor3.png" alt="Doctor 3" class="doctor-thumbnail" data-doctor="3">
+    <div class="main-container">
+        <!-- Top Row Boxes -->
+        <div class="top-row">
+            <div class="doctor-info-box">
+                <a href="doctor-details.html?name=Sathya%20Reddy&phone=9989649278&address=Hyderabad,%20India&fee=750&timings=08:00-16:00&website=sathyareddy.com" class="doctor-link">
+                    <h2 class="doctor-name">Sathya Reddy</h2>
+                    <hr>
+                    <p><strong>Phone Number:</strong> 9989649278</p>
+                    <p><strong>Address:</strong> Hyderabad, India</p>
+                    <p><strong>Fee per Visit:</strong> 750</p>
+                    <p><strong>Timings:</strong> 08:00 - 16:00</p>
+                </a>
+            </div>
+            <div class="doctor-info-box">
+                <a href="doctor-details.html?name=Another%20Doctor&phone=9876543210&address=Bangalore,%20India&fee=850&timings=09:00-17:00&website=anotherdoctor.com" class="doctor-link">
+                    <h2 class="doctor-name">Another Doctor</h2>
+                    <hr>
+                    <p><strong>Phone Number:</strong> 9989649278</p>
+                    <p><strong>Address:</strong> Hyderabad, India</p>
+                    <p><strong>Fee per Visit:</strong> 750</p>
+                    <p><strong>Timings:</strong> 08:00 - 16:00</p>
+                </a>
+            </div>
+            <div class="doctor-info-box">
+                <a href="doctor-details.html?name=Third%20Doctor&phone=9123456780&address=Chennai,%20India&fee=700&timings=10:00-18:00&website=thirddoctor.com" class="doctor-link">
+                    <h2 class="doctor-name">Third Doctor</h2>
+                    <hr>
+                    <p><strong>Phone Number:</strong> 9989649278</p>
+                    <p><strong>Address:</strong> Hyderabad, India</p>
+                    <p><strong>Fee per Visit:</strong> 750</p>
+                    <p><strong>Timings:</strong> 08:00 - 16:00</p>
+                </a>
             </div>
         </div>
 
-        <!-- Doctor Information and Appointment Form -->
-        <div class="doctor-details-form" id="doctorDetailsForm" style="display: none;">
-            <!-- Doctor Information -->
-            <div class="doctor-info">
-                <img src="" alt="Doctor" class="doctor-photo" id="doctorPhoto">
-                <div class="doctor-details">
-                    <h3 id="doctorName">Dr. Name <span class="status">●</span></h3>
-                    <p id="doctorSpecialty">Specialty</p>
-                    <p id="doctorLocation">Location</p>
-                </div>
+        <!-- Bottom Row Box -->
+        <div class="bottom-row">
+            <div class="doctor-info-box">
+                <a href="doctor-details.html" class="doctor-link">
+                    <h2 class="doctor-name">Sathya Reddy</h2>
+                    <hr>
+                    <p><strong>Phone Number:</strong> 9989649278</p>
+                    <p><strong>Address:</strong> Hyderabad, India</p>
+                    <p><strong>Fee per Visit:</strong> 750</p>
+                    <p><strong>Timings:</strong> 08:00 - 16:00</p>
+                </a>
             </div>
-
-            <!-- Appointment Form -->
-            <div class="appointment-form">
-                <h2>Book an Appointment</h2>
-                <form id="bookingForm">
-                    <div class="form-group">
-                        <label>
-                            <input type="radio" name="consultationType" value="In Doctor Chamber" checked>
-                            In Doctor Chamber
-                        </label>
-                        <label>
-                            <input type="radio" name="consultationType" value="In Video Call">
-                            In Video Call
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label for="fullName">Full Name</label>
-                        <input type="text" id="fullName" name="fullName" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="mobileNumber">Mobile Number</label>
-                        <div class="input-group">
-                            <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="(555) 555-1234" required>
-                            <button type="button" id="verifyButton">Verify</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="date" id="date" name="date" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="time">Time</label>
-                        <input type="time" id="time" name="time" required>
-                    </div>
-                    <button type="submit" class="submit-button">Book Appointment</button>
-                </form>
+            <div class="doctor-info-box">
+                <a href="doctor-details.html" class="doctor-link">
+                    <h2 class="doctor-name">Another Doctor</h2>
+                    <hr>
+                    <p><strong>Phone Number:</strong> 9989649278</p>
+                    <p><strong>Address:</strong> Hyderabad, India</p>
+                    <p><strong>Fee per Visit:</strong> 750</p>
+                    <p><strong>Timings:</strong> 08:00 - 16:00</p>
+                </a>
+            </div>
+            <div class="doctor-info-box">
+                <a href="doctor-details.html" class="doctor-link">
+                    <h2 class="doctor-name">Third Doctor</h2>
+                    <hr>
+                    <p><strong>Phone Number:</strong> 9989649278</p>
+                    <p><strong>Address:</strong> Hyderabad, India</p>
+                    <p><strong>Fee per Visit:</strong> 750</p>
+                    <p><strong>Timings:</strong> 08:00 - 16:00</p>
+                </a>
             </div>
         </div>
     </div>
-
-    <script src="script.js"></script>
+      
 </body>
 </html>
