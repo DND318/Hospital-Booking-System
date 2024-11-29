@@ -11,33 +11,33 @@
     <!-- Top Navigation Bar -->
     <nav class="navbar">
         <div class="logo">
-            <img src="/logo.jpg" width="500" height="600" alt="Logo"> <!-- Add your logo image here -->
+            <img src="logo.jpg" width="500" height="600" alt="Logo"> <!-- Add your logo image here -->
             <span>Abubupital</span>
         </div>
         <ul class="nav-links">
             <li><a href="homepage.html"><span>🏠</span> Home</a></li>
-            <li><a href="appointment.html"><span>📅</span> Appointments</a></li>
-            <li><a href="ApplyDoctor.html"><span>🔑</span> Apply Doctor</a></li>
-            <li><a href="#"><span>↩️</span> Logout</a></li>
+            <li><a href="/appointments"><span>📅</span> Appointments</a></li>
+            <li><a href="/ApplyDoctor"><span>🔑</span> Apply Doctor</a></li>
+            <li><a href="/login"><span>↩️</span> Logout</a></li>
             
         </ul>
-        <button class="btn-learn-more">Learn More</button>
+        <!-- <button class="btn-learn-more">Learn More</button> -->
     </nav>
 
     <!-- Main Content Section -->
     <div class="hero-section">
         <!-- Hero Text Content -->
         <div class="hero-text">
-            <h1>Bringing The Future Of Healthcare</h1>
+            <h1>Effortless Appointments, Exceptional Care</h1>
             <p>
-                Deep created replenish herb without night fruit day earth evening. Called his green were they're fruitful to over Sea bearing sixth Earth face. Them lesser great you'll second.
+                Book your medical appointments with ease and confidence. Our system ensures quick responses for emergencies, easy scheduling, and access to qualified doctors. Bringing the future of healthcare to your fingertips.
             </p>
-            <button class="btn-appointment">Make An Appointment</button>
+            <button class="btn-appointment" id="appointmentButton">Make An Appointment</button>
         </div>
 
         <!-- Hero Image -->
         <div class="hero-image">
-            <img src="/doctor.png" alt="Doctor with patient"> <!-- Add your image source here -->
+            <img src="doctor.png" alt="Doctor with patient"> <!-- Add your image source here -->
         </div>
     </div>
 
@@ -59,6 +59,12 @@
             <p>Experienced and certified medical staff.</p>
         </div>
     </div>
+
+    <script>
+        document.getElementById('appointmentButton').addEventListener('click', function() {
+          window.location.href = '/appointments';
+        });
+      </script>
 
 </body>
 </html>
