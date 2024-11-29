@@ -32,9 +32,10 @@
                     <a href="/doctor-details/<%= doctor._id %>" class="doctor-link">
                         <h2 class="doctor-name"><%= doctor.fullName %></h2>
                         <hr>
+                        <p><strong>Specialization:</strong> <%= doctor.specialization %></p>
                         <p><strong>Phone Number:</strong> <%= doctor.phone %></p>
                         <p><strong>Address:</strong> <%= doctor.address %></p>
-                        <p><strong>Fee per Visit:</strong> ₹<%= doctor.fee %></p>
+                        <p><strong>Fee per Visit:</strong> $<%= doctor.fee %></p>
                         <p><strong>Timings:</strong> <%= doctor.startTime %> - <%= doctor.endTime %></p>
                     </a>
                 </div>                
