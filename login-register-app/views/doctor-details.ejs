@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Details</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/logo.jpg" alt="Logo"> <!-- Replace with your logo -->
+            <span>Abubupital</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="homepage.html"><span>🏠</span> Home</a></li>
+            <li><a href="/appointments"><span>📅</span> Appointments</a></li>
+            <li><a href="/ApplyDoctor" class="active"><span>🔑</span> Apply Doctor</a></li>
+            <li><a href="/login"><span>↩️</span> Logout</a></li>
+        </ul>
+        <!-- <button class="btn-learn-more">Learn More</button> -->
+    </nav>
+
+    <div class="doctor-details-container">
+        <h1 id="doctor-name"><%= doctor.fullName %></h1>
+        <div class="details">
+            <p><strong>Timings:</strong> <%= doctor.startTime %> - <%= doctor.endTime %></p>
+            <p><strong>Phone Number:</strong> <%= doctor.phone %></p>
+            <p><strong>Address:</strong> <%= doctor.address %></p>
+            <p><strong>Fee per Visit:</strong> ₹<%= doctor.fee %></p>
+            <!--<p><strong>Website:</strong> <a href="<%= doctor.website ? doctor.website : '#' %>" target="_blank"><%= doctor.website ? doctor.website : '--' %></a></p> -->
+        </div>
+        <div class="booking-section">
+            <form action="/book" method="POST">
+                <button type="submit" class="btn-book-now">Book Now</button>
+                
+                <div class="form-group">
+                    <label for="date">Select Date:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Input email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Select Time:</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                
+                <!-- Hidden Fields for Doctor Details -->
+                <input type="hidden" name="doctorName" value="<%= doctor.fullName %>">
+                <input type="hidden" name="doctorPhone" value="<%= doctor.phone %>">
+                <input type="hidden" name="doctorAddress" value="<%= doctor.address %>">
+                <input type="hidden" name="doctorFee" value="<%= doctor.fee %>">
+            </form>
+        </div>        
+    </div>
+
+    <script>
+        function checkAvailability() {
+            // Get selected time from the form
+            const selectedTime = document.getElementById('time').value;
+    
+            if (!selectedTime) {
+                document.getElementById('availability-message').textContent = "Please select a time";
+                document.getElementById('availability-message').style.color = "orange";
+                return;
+            }
+    
+            // Get doctor's available times
+            const startTime = "<%= doctor.startTime %>";
+            const endTime = "<%= doctor.endTime %>";
+    
+            // Parse doctor's times and selected time
+            const [selectedHours, selectedMinutes] = selectedTime.split(':');
+            const selectedDateTime = new Date(1970, 0, 1, selectedHours, selectedMinutes);
+    
+            const [startHours, startMinutes] = startTime.split(':');
+            const startDateTime = new Date(1970, 0, 1, startHours, startMinutes);
+    
+            const [endHours, endMinutes] = endTime.split(':');
+            const endDateTime = new Date(1970, 0, 1, endHours, endMinutes);
+    
+            // Check if the time range spans across midnight
+            let isAvailable = false;
+    
+            if (startDateTime <= endDateTime) {
+                // Normal time range, e.g., 08:00 to 16:00
+                isAvailable = selectedDateTime >= startDateTime && selectedDateTime <= endDateTime;
+            } else {
+                // Time range spans over midnight, e.g., 22:00 to 06:00
+                isAvailable = selectedDateTime >= startDateTime || selectedDateTime <= endDateTime;
+            }
+    
+            // Display the availability result
+            if (isAvailable) {
+                document.getElementById('availability-message').textContent = "Available";
+                document.getElementById('availability-message').style.color = "green";
+            } else {
+                document.getElementById('availability-message').textContent = "Not Available";
+                document.getElementById('availability-message').style.color = "red";
+            }
+        }
+    </script>
+    
+</body>
+</html>

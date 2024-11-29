@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Receipt</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .receipt-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .receipt-container h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .receipt-details {
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        .receipt-details h3 {
+            color: #0056b3;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .receipt-details p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #333;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/logo.jpg" alt="Logo"> <!-- Replace with your logo -->
+            <span>Abubupital</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="homepage.html"><span>🏠</span> Home</a></li>
+            <li><a href="/appointments"><span>📅</span> Appointments</a></li>
+            <li><a href="/ApplyDoctor" class="active"><span>🔑</span> Apply Doctor</a></li>
+            <li><a href="/login"><span>↩️</span> Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="receipt-container">
+        <h1>Booking Receipt</h1>
+        <div class="receipt-details">
+            <h3>YOUR DETAILS</h3>
+            <p><strong>Email address:</strong> <%= booking.email %></p>
+            <p><strong>Date:</strong> <%= booking.date %></p>
+
+            <h3>DOCTOR DETAILS</h3>
+            <p><strong>Doctor Name:</strong> <%= doctor.name %></p>
+            <p><strong>Phone Number:</strong> <%= doctor.phone %></p>
+            <p><strong>Address:</strong> <%= doctor.address %></p>
+            <p><strong>Fee per Visit:</strong> ₹<%= doctor.fee %></p>
+
+            <h3>BOOKING INFORMATION</h3>
+            <p><strong>Check-in:</strong> <%= booking.date %> at <%= booking.time %></p>
+        </div>
+        <div class="footer">
+            Your receipt is automatically generated<br>
+            This is proof of your transaction - it can't be used to claim VAT.
+        </div>
+    </div>
+</body>
+</html>
