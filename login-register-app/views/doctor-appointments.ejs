@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Appointments</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/hospital.png">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .appointment-card {
+      background: #fff;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .appointment-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .appointment-header {
+      font-size: 18px;
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .appointment-details {
+      color: #333;
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    .appointment-status {
+      font-weight: bold;
+      margin-top: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    .status-pending {
+      background-color: #ffc107;
+      color: white;
+    }
+
+    .status-approved {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .status-declined {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .status-completed {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .action-btn {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      margin: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .approve-btn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .approve-btn:hover {
+      background-color: #218838;
+    }
+
+    .decline-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .decline-btn:hover {
+      background-color: #c82333;
+    }
+
+    .completed-btn {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .completed-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="/logo.jpg" alt="Logo">
+      <span>Abubupital</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/doctor"><span>🏠</span> Home</a></li>
+      <li><a href="/ApplyDoctor"><span>🩺</span> Apply Doctor</a></li>
+      <li><a href="/doctor/appointments" class="active"><span>📅</span> My Appointments</a></li>
+      <li><a href="/logout"><span>↩️</span> Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-container">
+    <h1>My Appointments</h1>
+    <% if (appointments.length === 0) { %>
+      <p>No appointments available.</p>
+    <% } else { %>
+      <% appointments.forEach(function(appointment) { %>
+        <div class="appointment-card">
+          <div class="appointment-header">
+            Patient: <%= appointment.patientID ? appointment.patientID.fullName : 'Unknown' %>
+          </div>
+          <div class="appointment-details">
+            <strong>Phone:</strong> <%= appointment.patientID ? appointment.patientID.phone : 'Unknown' %>
+          </div>
+          <div class="appointment-details">
+            <strong>Email:</strong> <%= appointment.patientID ? appointment.patientID.email : 'Unknown' %>
+          </div>
+          <div class="appointment-details">
+            <strong>Date & Time:</strong> <%= new Date(appointment.dateTime).toLocaleString() %>
+          </div>
+          <div class="appointment-details">
+            <strong>Status:</strong>
+            <span class="appointment-status status-<%= appointment.status.toLowerCase() %>">
+              <%= appointment.status %>
+            </span>
+          </div>
+          <div class="appointment-actions">
+            <button class="action-btn approve-btn" onclick="updateStatus('<%= appointment._id %>', 'Approved')">Approve</button>
+            <button class="action-btn decline-btn" onclick="updateStatus('<%= appointment._id %>', 'Declined')">Decline</button>
+            <button class="action-btn completed-btn" onclick="updateStatus('<%= appointment._id %>', 'Completed')">Completed</button>
+          </div>
+        </div>
+      <% }); %>
+    <% } %>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Function to update appointment status
+    async function updateStatus(appointmentId, status) {
+      try {
+        // Send a PATCH request to update the appointment status
+        const response = await fetch(`/appointments/${appointmentId}/status`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status }),
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+          alert(result.message);
+          location.reload();
+        } else {
+          alert(result.message || 'Error updating appointment status.');
+        }
+      } catch (error) {
+        console.error('Error updating appointment status:', error);
+        alert('An error occurred. Please try again.');
+      }
+    }
+  </script>
+</body>
+
+</html>

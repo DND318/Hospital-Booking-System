@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search and Book</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/hospital.png">
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="/logo.jpg" alt="Logo">
+      <span>Abubupital - Patient Dashboard</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/patient"><span>🏠</span> Home</a></li>
+      <li><a href="/patient/appointments"><span>📅</span> My Appointments</a></li>
+      <li><a href="/logout"><span>↩️</span> Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Search Bar -->
+  <div class="form-container">
+    <form action="/search-book" method="GET">
+      <input
+        type="text"
+        name="search"
+        placeholder="Search by doctor name or specialization"
+        value="<%= search || '' %>"
+      />
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <!-- Doctor List -->
+  <div class="main-container">
+    <h1>Search and Book Doctor</h1>
+    <div class="top-row">
+      <% if (doctors.length === 0) { %>
+        <p>No doctors found. Please try a different search.</p>
+      <% } else { %>
+        <% doctors.forEach(function (doctor) { %>
+          <div class="doctor-info-box">
+            <h2 class="doctor-name"><%= doctor.fullName %></h2>
+            <hr>
+            <p><strong>Specialization:</strong> <%= doctor.specialization %></p>
+            <p><strong>Fee per Visit:</strong> $<%= doctor.fee %></p>
+            <p><strong>Available Times:</strong> <%= doctor.startTime %> - <%= doctor.endTime %></p>
+            <button
+              class="book-btn"
+              onclick="openBookingModal('<%= doctor._id %>', '<%= doctor.fullName %>')"
+            >
+              Book Appointment
+            </button>
+          </div>
+        <% }); %>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- Booking Modal -->
+  <div id="booking-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeBookingModal()">&times;</span>
+      <h2>Book Appointment</h2>
+      <form id="booking-form">
+        <input type="hidden" id="doctorId" name="doctorId" />
+        <div class="form-group">
+          <label for="doctorName">Doctor:</label>
+          <input type="text" id="doctorName" name="doctorName" readonly />
+        </div>
+        <div class="form-group">
+          <label for="dateTime">Date and Time:</label>
+          <input type="datetime-local" id="dateTime" name="dateTime" required />
+        </div>
+        <button type="submit">Confirm Booking</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openBookingModal(doctorId, doctorName) {
+      document.getElementById('doctorId').value = doctorId;
+      document.getElementById('doctorName').value = doctorName;
+      document.getElementById('booking-modal').style.display = 'flex';
+    }
+
+    function closeBookingModal() {
+      document.getElementById('booking-modal').style.display = 'none';
+    }
+
+    document.getElementById('booking-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+  const formDataObj = {};
+  formData.forEach((value, key) => {
+    formDataObj[key] = value;
+  });
+
+  try {
+    const response = await fetch('/book', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formDataObj),
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+      alert(result.message); // Show success message
+      closeBookingModal();
+    } else {
+      alert(result.message); // Show error message for invalid time
+    }
+  } catch (error) {
+    alert('Error submitting booking. Please try again.');
+    console.error('Error:', error);
+  }
+});
+
+  </script>
+
+  <style>
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+
+    .close-btn {
+      float: right;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: red;
+    }
+  </style>
+</body>
+
+</html>

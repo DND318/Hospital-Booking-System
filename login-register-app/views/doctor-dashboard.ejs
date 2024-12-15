@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/hospital.png">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/logo.jpg" width="50" height="50" alt="Logo">
+            <span>Abubupital - Doctor</span>
+        </div>
+        <ul class="nav-links">
+            <!-- <li><a href="/doctor"><span>🏠</span> Home</a></li> -->
+            <li><a href="/ApplyDoctor"><span>🩺</span> Apply Doctor</a></li>
+            <li><a href="/doctor/appointments"><span>📅</span> My Appointments</a></li>
+            <li><a href="/logout"><span>↩️</span> Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Section -->
+    <div class="hero-section">
+        <!-- Hero Text Content -->
+        <div class="hero-text">
+            <h1>
+            <div class="username">
+                <span>Welcome, <%= username %></span>
+              </div>
+            </h1>
+            <p>
+                Manage your appointments, view your schedule, and provide excellent care to your patients.
+            </p>
+            <button class="btn-appointment" id="appointmentButton">View Appointments</button>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="hero-image">
+            <img src="/doctor.png" alt="Doctor">
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features-section">
+        <div class="feature">
+            <span class="feature-icon">📅</span>
+            <h3>My Schedule</h3>
+            <p>View and manage your daily appointment schedule.</p>
+        </div>
+        <div class="feature">
+            <span class="feature-icon">💼</span>
+            <h3>Patient History</h3>
+            <p>Access patient details and medical history.</p>
+        </div>
+        <div class="feature">
+            <span class="feature-icon">💬</span>
+            <h3>Contact Support</h3>
+            <p>Reach out for any assistance you need.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('appointmentButton').addEventListener('click', function() {
+          window.location.href = '/doctor/appointments';
+        });
+    </script>
+</body>
+</html>

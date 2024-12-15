@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Appointments</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/hospital.png">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .appointment-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #fff;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .appointment-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .appointment-header {
+      font-size: 20px;
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .appointment-details {
+      color: #333;
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    .appointment-status {
+      margin-top: 15px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .status-pending {
+      background-color: #ffc107;
+      color: white;
+    }
+
+    .status-approved {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .status-declined {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .status-completed {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="/logo.jpg" alt="Logo">
+      <span>Abubupital - Patient Dashboard</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/patient"><span>🏠</span> Home</a></li>
+      <li><a href="/patient/appointments" class="active"><span>📅</span> My Appointments</a></li>
+      <li><a href="/logout"><span>↩️</span> Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="main-container">
+    <h1>My Appointments</h1>
+    <% if (appointments.length === 0) { %>
+      <p>No appointments booked yet.</p>
+    <% } else { %>
+      <div class="appointments-list">
+        <% appointments.forEach(function(appointment) { %>
+          <div class="appointment-card">
+            <div class="appointment-header">
+              Appointment with Dr. <%= appointment.doctorID.fullName %>
+            </div>
+            <div class="appointment-details">
+              <strong>Date & Time:</strong> <%= new Date(appointment.dateTime).toLocaleString() %>
+            </div>
+            <div class="appointment-details">
+              <strong>Status:</strong>
+              <span
+                class="appointment-status status-<%= appointment.status.toLowerCase() %>">
+                <%= appointment.status %>
+              </span>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } %>
+  </div>
+</body>
+
+</html>
