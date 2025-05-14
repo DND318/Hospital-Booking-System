@@ -36,37 +36,6 @@ This project was built as part of our Software Engineering course using the MERN
 - Node.js and npm
 - MongoDB (local or Atlas)
 
-### Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/DND318/Hospital-Booking-System.git
-cd Hospital-Booking-System
-```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Create a `.env` file in the root directory and add the following:
-
-```env
-PORT=3000
-MONGODB_URI=mongodb://localhost:27017/hospital_booking
-SESSION_SECRET=your_secret_key
-```
-
-4. Start the application:
-
-```bash
-npm start
-```
-
-Visit `http://localhost:3000` in your browser.
-
 ---
 
 ## 👥 User Roles
