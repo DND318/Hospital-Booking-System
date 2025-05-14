@@ -85,7 +85,7 @@ Manual test cases were created to validate:
 
 ## 📸 Screenshots
 
-_You can add screenshots of the patient/doctor dashboards, booking pages, or search functions here to showcase the app UI._
+![Image](https://github.com/user-attachments/assets/5dd93dae-1470-423a-8805-4ec94e2ab0f0)
 
 ---
 
